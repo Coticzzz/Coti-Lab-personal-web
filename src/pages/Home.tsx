@@ -99,6 +99,7 @@ export default function Home({ onLogoClick }: HomeProps) {
                   <img
                     src="/images/avatar.jpg"
                     alt="Coti Lab"
+                    loading="lazy"
                     className="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover"
                     style={{
                       border: '2px solid rgba(255,255,255,0.08)',
@@ -245,6 +246,7 @@ function MasonryCard({ project, index, onOpen }: { project: Project; index: numb
           <img
             src={project.image}
             alt={project.title}
+            loading="lazy"
             className={`w-full h-full object-cover transition-transform duration-700 ease-out ${hovered ? 'scale-[1.03]' : 'scale-100'}`}
           />
           {isPlaceholder ? (

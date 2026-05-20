@@ -1,9 +1,39 @@
 import { useState, useCallback } from 'react';
 import Landing from './pages/Landing';
 import Home from './pages/Home';
+import { useDeviceDetect } from './hooks/useDeviceDetect';
+
+function BackgroundLayer({ isHome, isMobile }: { isHome: boolean; isMobile: boolean }) {
+  const src = isMobile
+    ? (isHome ? '/videos/milkyway-mobile.mp4' : '/videos/blackhole-mobile.mp4')
+    : (isHome ? '/videos/milkyway.webm' : '/videos/blackhole.webm');
+
+  const poster = isMobile
+    ? (isHome ? '/images/bg-milkyway-mobile.jpg' : '/images/bg-blackhole-mobile.jpg')
+    : undefined;
+
+  return (
+    <>
+      <video
+        className="fixed inset-0 z-0 w-full h-full"
+        style={{ objectFit: 'cover' }}
+        src={src}
+        poster={poster}
+        autoPlay
+        loop
+        muted
+        playsInline
+      />
+      {isHome && (
+        <div className="fixed inset-0 z-[1]" style={{ background: 'rgba(0, 0, 0, 0.42)' }} />
+      )}
+    </>
+  );
+}
 
 export default function App() {
   const [page, setPage] = useState<'landing' | 'home'>('landing');
+  const { isMobile } = useDeviceDetect();
 
   const goHome = useCallback(() => {
     setPage('home');
@@ -19,31 +49,8 @@ export default function App() {
 
   return (
     <>
-      {/* ===== BACKGROUND LAYER - persistent, never changes ===== */}
-      {isHome ? (
-        <>
-          <video
-            className="fixed inset-0 z-0 w-full h-full"
-            style={{ objectFit: 'cover' }}
-            src="/videos/milkyway.webm"
-            autoPlay
-            loop
-            muted
-            playsInline
-          />
-          <div className="fixed inset-0 z-[1]" style={{ background: 'rgba(0, 0, 0, 0.42)' }} />
-        </>
-      ) : (
-        <video
-          className="fixed inset-0 z-0 w-full h-full"
-          style={{ objectFit: 'cover' }}
-          src="/videos/blackhole.webm"
-          autoPlay
-          loop
-          muted
-          playsInline
-        />
-      )}
+      {/* ===== BACKGROUND LAYER ===== */}
+      <BackgroundLayer isHome={isHome} isMobile={isMobile} />
       <div
         className="fixed inset-0 z-[2] pointer-events-none"
         style={{
