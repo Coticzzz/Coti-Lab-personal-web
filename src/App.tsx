@@ -10,13 +10,13 @@ function BackgroundLayer({ isHome, isMobile }: { isHome: boolean; isMobile: bool
 
   const poster = isMobile
     ? (isHome ? '/images/bg-milkyway-mobile.jpg' : '/images/bg-blackhole-mobile.jpg')
-    : undefined;
+    : (isHome ? '/images/bg-milkyway-mobile.jpg' : '/images/bg-blackhole-mobile.jpg');
 
   return (
     <>
       <video
         className="fixed inset-0 z-0 w-full h-full"
-        style={{ objectFit: 'cover' }}
+        style={{ objectFit: 'cover', background: '#0a0a0f' }}
         src={src}
         poster={poster}
         autoPlay

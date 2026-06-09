@@ -28,6 +28,15 @@ const PROJECT_DETAILS: Record<number, ProjectDetailData> = {
     image: '/images/nebula-dreams.png', projectUrl: 'mailto:1835036863@qq.com', docUrl: '/files/technical-whitepaper.pdf',
     tags: ['AIGC'], tools: ['Kimi2.6', 'Nano Banana Pro', 'Seedance 2.0', 'Kling 3.0', 'DaVinci Resolve 20'], year: '2026',
   },
+  3: {
+    id: 3, title: 'AI LUT Factory', shortDesc: 'AI-powered professional cinematic LUT color grading factory.',
+    fullDescription: [
+      'Using artificial intelligence, rapidly generate multiple cinematic color grading LUT styles to fuel endless inspiration for film production and visual design.',
+      'Features AI-driven generation, diverse professional film-grade styles, 3D LUT export (.cube format), and highly customizable parameters — built on deep learning for flexible creative workflows.',
+    ],
+    image: '/images/ai-lut-factory.png', projectUrl: 'https://github.com/Coticzzz/-ai-lut-factory', docUrl: 'https://github.com/Coticzzz/-ai-lut-factory',
+    tags: ['Code'], tools: ['Claude Code', 'AI'], year: '2026',
+  },
   2: {
     id: 2, title: 'Mr. Inspiration', shortDesc: 'Inspiration lies at the heart of all creation.',
     fullDescription: [

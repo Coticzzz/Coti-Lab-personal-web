@@ -3,6 +3,7 @@ import {
   Mail,
   ArrowUpRight,
   Music2,
+  Github,
 } from 'lucide-react';
 import ProjectModal from '../components/ProjectModal';
 
@@ -21,14 +22,14 @@ export interface Project {
 
 export const PROJECTS: Project[] = [
   { id: 1, title: 'of Dream, Death, and Singing', description: 'AI work of AI film festival.', image: '/images/nebula-dreams.png', link: '/project/1', tags: ['AIGC'] },
-  { id: 2, title: 'Mr. Inspiration', description: 'Inspiration lies at the heart of all creation. Every spark of inspiration lights up the path to building wonderful dreams.', image: '/images/mr-inspiration.png', link: '/project/2', tags: ['AIGC'] },
-  { id: 3, title: 'Coming Soon', description: '', image: '/images/placeholder-1.png', link: '', tags: [] },
+  { id: 2, title: 'Mr. Inspiration', description: 'Inspiration lies at the heart of all creation.', image: '/images/mr-inspiration.png', link: '/project/2', tags: ['AIGC'] },
+  { id: 3, title: 'AI LUT Factory', description: 'AI-powered professional cinematic LUT color grading factory.', image: '/images/ai-lut-factory.png', link: '/project/3', tags: ['Code'] },
   { id: 4, title: 'Coming Soon', description: '', image: '/images/placeholder-2.png', link: '', tags: [] },
   { id: 5, title: 'Coming Soon', description: '', image: '/images/placeholder-3.png', link: '', tags: [] },
   { id: 6, title: 'Coming Soon', description: '', image: '/images/placeholder-4.png', link: '', tags: [] },
 ];
 
-const ALL_TAGS = ['All', 'AIGC', 'React', 'Game', 'Creative Coding'];
+const ALL_TAGS = ['All', 'AIGC', 'Code', 'React', 'Game'];
 
 function useScrollReveal() {
   const ref = useRef<HTMLDivElement>(null);
@@ -156,6 +157,15 @@ export default function Home({ onLogoClick }: HomeProps) {
                       <Music2 size={12} strokeWidth={1.5} />
                       Coti
                     </a>
+                    <a
+                      href="https://github.com/Coticzzz"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 hover:text-white/60 transition-colors duration-400"
+                    >
+                      <Github size={12} strokeWidth={1.5} />
+                      Coticzzz
+                    </a>
                   </div>
                 </div>
               </div>
@@ -242,7 +252,7 @@ function MasonryCard({ project, index, onOpen }: { project: Project; index: numb
         onMouseLeave={() => !isPlaceholder && setHovered(false)}
       >
         {/* Image */}
-        <div className="relative overflow-hidden aspect-[4/3]">
+        <div className="relative overflow-hidden aspect-video">
           <img
             src={project.image}
             alt={project.title}
@@ -265,17 +275,19 @@ function MasonryCard({ project, index, onOpen }: { project: Project; index: numb
         </div>
 
         {/* Info */}
-        <div className="p-3.5">
-          <h3 className={`font-medium text-sm mb-1 transition-colors duration-300 ${isPlaceholder ? 'text-white/20' : 'text-white/80 group-hover:text-white'}`} style={{ fontWeight: 400, letterSpacing: '0.02em' }}>
-            {project.title}
-          </h3>
-          {project.description && (
-            <p className="text-white/25 text-xs mb-3 line-clamp-2" style={{ lineHeight: 1.6, fontWeight: 300 }}>
-              {project.description}
-            </p>
-          )}
+        <div className="p-3.5 flex flex-col flex-1">
+          <div className="flex-1">
+            <h3 className={`font-medium text-sm mb-1 transition-colors duration-300 ${isPlaceholder ? 'text-white/20' : 'text-white/80 group-hover:text-white'}`} style={{ fontWeight: 400, letterSpacing: '0.02em' }}>
+              {project.title}
+            </h3>
+            {project.description && (
+              <p className="text-white/25 text-xs line-clamp-2" style={{ lineHeight: 1.6, fontWeight: 300 }}>
+                {project.description}
+              </p>
+            )}
+          </div>
           {project.tags.length > 0 && (
-            <div className="flex flex-wrap gap-1.5">
+            <div className="flex flex-wrap gap-1.5 mt-3">
               {project.tags.map((tag) => (
                 <span key={tag} className="px-2 py-0.5 rounded-full text-[10px] text-white/30 bg-white/[0.04] border border-white/[0.05]" style={{ letterSpacing: '0.02em' }}>
                   {tag}
